@@ -35,6 +35,7 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper;
 import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import com.amazonaws.auth.SystemPropertiesCredentialsProvider;
+import com.amazonaws.auth.WebIdentityTokenCredentialsProvider;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.RegionUtils;
@@ -81,6 +82,7 @@ public class AwsPluginExtension {
 			providers.add(new SystemPropertiesCredentialsProvider());
 			providers.add(new ProfileCredentialsProvider(profileNameToUse));
 			providers.add(new EC2ContainerCredentialsProviderWrapper());
+			providers.add(new WebIdentityTokenCredentialsProvider());
 			return new AWSCredentialsProviderChain(providers);
 		}
 		return DefaultAWSCredentialsProviderChain.getInstance();
