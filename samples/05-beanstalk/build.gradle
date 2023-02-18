@@ -7,17 +7,17 @@ buildscript {
 	}
 	dependencies {
 		classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
-		classpath "jp.classmethod.aws:gradle-aws-plugin:0.+"
+		classpath "fork.jp.classmethod.aws:gradle-aws-plugin:0.+"
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
-apply plugin: "jp.classmethod.aws.beanstalk"
+apply plugin: "fork.jp.classmethod.aws.beanstalk"
 
 // ==== Project settings
 
-group = 'jp.classmethod.aws.gradle.sample'
+group = 'fork.jp.classmethod.aws.gradle.sample'
 version = '0.1-SNAPSHOT'
 ext.artifactId = '05-beanstalk'
 

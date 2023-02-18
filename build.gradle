@@ -11,11 +11,11 @@ buildscript {
 		classpath "de.aaschmid:gradle-cpd-plugin:1.0"
 		classpath "net.ltgt.gradle:gradle-errorprone-plugin:0.0.14"
 		classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2"
-		classpath "com.gradle.publish:plugin-publish-plugin:0.9.10"
+		classpath "com.gradle.publish:plugin-publish-plugin:1.1.0"
 	}
 }
 
-group = "jp.classmethod.aws"
+group = "fork.jp.classmethod.aws"
 ext.artifactId = "gradle-aws-plugin"
 
 apply plugin: "java"
@@ -79,6 +79,7 @@ task verifyNoCheckstyleWarningsInMain {
 	}
 }
 checkstyleMain.finalizedBy verifyNoCheckstyleWarningsInMain
+
 task verifyNoCheckstyleWarningsInTest {
 	group = "verification"
 	description = "Fail if checkstyleTest result contains warnings"
@@ -238,5 +239,5 @@ apply from: "deploy/${group}.gradle"
 
 // ======== wrapper ========
 task wrapper(type: Wrapper) {
-	gradleVersion = "4.6"
+	gradleVersion = "4.10"
 }

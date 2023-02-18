@@ -1,4 +1,4 @@
-Gradle AWS Plugin
+This is the fork of the outdated Gradle AWS Plugin
 =================
 
 [![Join the chat at https://gitter.im/gradle-aws-plugin/Lobby](https://badges.gitter.im/gradle-aws-plugin/Lobby.svg)](https://gitter.im/gradle-aws-plugin/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -92,11 +92,11 @@ buildscript {
     maven { url "https://plugins.gradle.org/m2/" }
   }
   dependencies {
-    classpath "jp.classmethod.aws:gradle-aws-plugin:0.30"
+    classpath "fork.jp.classmethod.aws:gradle-aws-plugin:0.30"
   }
 }
 
-apply plugin: 'jp.classmethod.aws'
+apply plugin: 'fork.jp.classmethod.aws'
 
 aws {
   profileName = 'credentials-profile-name-in-your-profile-configuration-file (~/.aws/credentials)'
@@ -109,7 +109,7 @@ These credentials are used to make API accesses by default. The format of the cr
 ### S3 Create bucket
 
 ```groovy
-apply plugin: 'jp.classmethod.aws.s3'
+apply plugin: 'fork.jp.classmethod.aws.s3'
 
 task createBucket(type: CreateBucketTask) {
 	bucketName myBucketName
@@ -126,9 +126,9 @@ Look at [S3 example 1](samples/01-s3-upload-simple) for more information.
 ### S3 files tasks
 
 ```groovy
-apply plugin: 'jp.classmethod.aws.s3'
+apply plugin: 'fork.jp.classmethod.aws.s3'
 
-task syncObjects(type: jp.classmethod.aws.gradle.s3.SyncTask) {
+task syncObjects(type: fork.jp.classmethod.aws.gradle.s3.SyncTask) {
   bucketName 'foobar.example.com'
   source file('path/to/objects')
 }
@@ -140,7 +140,7 @@ Look at [S3 example 1](samples/01-s3-upload-simple) and [S3 example 2](samples/0
 ### EC2 instance tasks
 
 ```groovy
-apply plugin: 'jp.classmethod.aws.ec2'
+apply plugin: 'fork.jp.classmethod.aws.ec2'
 
 // You can overwrite default credentials and region settings like this:
 // ec2 {
@@ -148,11 +148,11 @@ apply plugin: 'jp.classmethod.aws.ec2'
 //   region = 'us-east-1'
 // }
 
-task stopBastion(type: jp.classmethod.aws.gradle.ec2.AmazonEC2StopInstanceTask) {
+task stopBastion(type: fork.jp.classmethod.aws.gradle.ec2.AmazonEC2StopInstanceTask) {
   instanceIds += 'i-12345678'
 }
 
-task startBastion(type: jp.classmethod.aws.gradle.ec2.AmazonEC2StartInstanceTask) {
+task startBastion(type: fork.jp.classmethod.aws.gradle.ec2.AmazonEC2StartInstanceTask) {
   instanceIds += 'i-12345678'
 }
 ```
@@ -163,7 +163,7 @@ Look at [EC2 example](samples/03-ec2) for more information.
 ### RDS DB instance tasks
 
 ```groovy
-apply plugin: "jp.classmethod.aws.rds"
+apply plugin: "fork.jp.classmethod.aws.rds"
 
 // You can overwrite default credentials and region settings like this:
 // rds {
@@ -200,14 +200,14 @@ Look at [RDS example](samples/07-rds) for more information.
 ### Route 53 hosted zone tasks
 
 ```groovy
-apply plugin: 'jp.classmethod.aws.route53'
+apply plugin: 'fork.jp.classmethod.aws.route53'
 
-task createHostedZone(type: jp.classmethod.aws.gradle.route53.CreateHostedZoneTask) {
+task createHostedZone(type: fork.jp.classmethod.aws.gradle.route53.CreateHostedZoneTask) {
 	hostedZoneName "foobar.example.com"
 	callerReference '0BF44985-9D79-BF3B-A9B0-5AE24D6E86E1'
 }
 
-task deleteHostedZone(type: jp.classmethod.aws.gradle.route53.DeleteHostedZoneTask) {
+task deleteHostedZone(type: fork.jp.classmethod.aws.gradle.route53.DeleteHostedZoneTask) {
 	hostedZoneId "XXXX"
 }
 ```
@@ -218,7 +218,7 @@ Look at [Route 53 example](samples/04-route53) for more information.
 ### Elastic Beanstalk environment tasks
 
 ```groovy
-apply plugin: 'jp.classmethod.aws.beanstalk'
+apply plugin: 'fork.jp.classmethod.aws.beanstalk'
 beanstalk {
   String extension = project.war.archiveName.tokenize('.').last()
   String timestamp = new Date().format("yyyyMMdd'_'HHmmss", TimeZone.default)
@@ -261,7 +261,7 @@ Look [Elastic Beanstalk example](samples/05-beanstalk) for more information.
 ### CloudFormation stack tasks
 
 ```groovy
-apply plugin: 'jp.classmethod.aws.cloudformation'
+apply plugin: 'fork.jp.classmethod.aws.cloudformation'
 
 cloudFormation {
   stackName 'foobar-stack'
@@ -289,7 +289,7 @@ Look at [CloudFormation example](samples/06-cloudformation) for more information
 
 ```groovy
 apply plugin: "base"
-apply plugin: "jp.classmethod.aws.lambda"
+apply plugin: "fork.jp.classmethod.aws.lambda"
 aws {
 	profileName = "default"
 	region = "ap-northeast-1"
@@ -364,7 +364,7 @@ Look at [Lambda example](samples/08-lambda) for more information.
 ### SQS tasks
 
 ```groovy
-apply plugin: "jp.classmethod.aws.sqs"
+apply plugin: "fork.jp.classmethod.aws.sqs"
 
 task sendMessages(type: AmazonSQSSendMessagesTask) {
 	queueName 'gradle-aws-plugin-sample'
@@ -387,7 +387,7 @@ Look at [SQS example](samples/09-sqs) for more information.
 
 ### SNS tasks
 ```groovy
-apply plugin: "jp.classmethod.aws.sns"
+apply plugin: "fork.jp.classmethod.aws.sns"
 
 task publishMessage(type: AmazonSNSPublishMessageTask) {
 	topicArn 'arn:aws:sns:us-east-1:000000000000:gradle-aws-plugin-sns-topic'
@@ -407,7 +407,7 @@ Look at [SNS example](samples/10-sns) for more information.
 
 License
 -------
-Copyright (C) 2013-2018 [Classmethod, Inc.](http://classmethod.jp/)
+Copyright (C) 2013-2018 [Classmethod, Inc.](http://classmethod.fork.jp/)
 
 Distributed under the Apache License v2.0.  See the file [copyright/LICENSE.txt](copyright/LICENSE.txt).
 

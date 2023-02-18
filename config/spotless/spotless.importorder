@@ -1,8 +1,8 @@
 #Organize Import Order
 #Fri Jul 08 16:32:13 JST 2016
-9=jp.xet.sparwings
+9=fork.jp.xet.sparwings
 8=
-7=jp
+7=fork.jp
 6=com
 5=org
 4=org.slf4j
